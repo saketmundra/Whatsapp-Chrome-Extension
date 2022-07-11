@@ -7,25 +7,28 @@ function Messenger() {
         setTitle(event.target.value)
     }
 
-    const [code, setCode] = useState("Country Code")
+    const [code, setCode] = useState("")
 
     useEffect(() => {
     }, [code])
 
-    const AsDownload=()=>{
+    const AsDownload = () => {
         window.open(link, "_blank");
         setCode("Country Code")
-      };
+    };
 
     const buttonChange = (event) => {
         if (event.currentTarget.id === "india") {
+            event.currentTarget.className += "active"
             setCode(91)
         }
         else if (event.currentTarget.id === "usa") {
-            setCode(21)
+            event.currentTarget.className += "active"
+            setCode(1)
         }
         else if (event.currentTarget.id === "england") {
-            setCode(92)
+            event.currentTarget.className += "active"
+            setCode(44)
         }
     }
 
@@ -38,17 +41,13 @@ function Messenger() {
 
     return (
         <div className="">
-            <h1>Now, Chat Without Saving Phone Number</h1>
-            <div className="d-flex justify-content">
-                <div className="dropdown m-2">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        {code}
-                    </button>
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><button className="dropdown-item" id="india" onClick={buttonChange} > 🇮🇳 +91 </button></li>
-                        <li><button className="dropdown-item" id="usa" onClick={buttonChange}> 🇺🇸 +1 </button></li>
-                        <li><button className="dropdown-item" id="england" onClick={buttonChange}> 🇬🇧 +44</button></li>
-                    </ul>
+            <div className="d-flex flex-column justify-content">
+                <div className="btn dropstart  d-flex flex-row">
+
+                    <button className="btn btn-light m-2" id="india" onClick={buttonChange} > 🇮🇳 +91 </button>
+                    <button className="btn btn-light m-2" id="usa" onClick={buttonChange}> 🇺🇸 +1 </button>
+                    <button className="btn btn-light m-2" id="england" onClick={buttonChange}> 🇬🇧 +44</button>
+
                 </div>
                 <div className="form-group m-2">
                     {/* <label htmlFor="exampleFormControlInput1"></label> */}
